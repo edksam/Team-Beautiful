@@ -6,12 +6,6 @@ const router = require("./routes/index");
 const MongoClient = require("mongodb").MongoClient;
 const MONGODB_URI =
   "mongodb+srv://tb_User:thebeautifulone@team-beautiful.t0a84.mongodb.net/tb_User?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
 
 const app = express();
 const PORT = 3001;
