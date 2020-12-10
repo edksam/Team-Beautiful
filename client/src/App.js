@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
-import GraduateProfile from "./components/graduates/GraduateProfile";
+// import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
-import GraduateEdit from "./components/graduates/GraduateEdit";
-
+// import GraduateEdit from "./components/graduates/GraduateEdit";
+import GraduateInfo from "./components/graduates/GraduateInfo";
 function App() {
   return (
     <div>
@@ -65,7 +65,7 @@ const Navigation = () => {
               activeClassName="active"
               to="/graduates/:_id"
             >
-              Graduates Profile
+              Graduates Info
             </NavLink>
           </li>
         </ul>
@@ -80,8 +80,8 @@ const Main = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
-      <Route exact path="/graduates/:_id" component={GraduateProfile} />
-      <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
+      <Route exact path="/graduates/:_id" component={GraduateInfo} />
+      {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
     </Switch>
   );
 };
