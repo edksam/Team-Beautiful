@@ -76,7 +76,7 @@ const PreviewProfile = ({ id }) => {
           <Container>
             <Row className="rows">
               <Col xs={6} md={4} className="columns">
-                <i class="fa fa-linkedin" fa-lg></i>
+                <i class="fa-lg fa-linkedin" fa-lg></i>
                 <p>LinkedIn</p>
               </Col>
               <Col className="columns">
