@@ -1,0 +1,15 @@
+/* .rows {
+    border: 2px solid red;
+}
+.columns {
+    border: 2px solid blue;
+} */
+h1 {
+    font-size: 1.8rem;
+}
+h2 {
+    font-size: 1.6rem;
+}
+h2, h4 {
+    font-weight: 400;
+}
