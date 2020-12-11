@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { post } from "axios";
+import Home from "../pages/Home";
 
 function GraduateAdd(props) {
   const initialState = {
@@ -32,6 +33,7 @@ function GraduateAdd(props) {
       try {
         const response = await post("/api/graduates", graduate);
         props.history.push(`/graduates/${response.data._id}`);
+  
       } catch (error) {
         console.log("error", error);
       }
@@ -107,7 +109,7 @@ function GraduateAdd(props) {
                   className="form-control"
                   id="languagesInput"
                   name="languages"
-                    value={graduate.languages}
+                  value={graduate.languages}
                   onChange={handleChange}
                 />
               </div>
@@ -357,6 +359,7 @@ function GraduateAdd(props) {
           <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>
         </div> */}
       </form>
+      <Home graduate={graduate}/>
     </div>
   );
 }

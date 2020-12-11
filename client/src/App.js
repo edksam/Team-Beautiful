@@ -11,6 +11,9 @@ import GraduateList from "./components/graduates/GraduateList";
 import GraduateAdd from "./components/graduates/GraduateAdd";
 // import GraduateEdit from "./components/graduates/GraduateEdit";
 import GraduateInfo from "./components/graduates/GraduateInfo";
+// import Logo
+import logo from "./images/logo.png"
+// import HomePage from "./components/graduates/GraduateHomePage";
 function App() {
   return (
     <div>
@@ -28,7 +31,8 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a href="/" className="navbar-brand">
-        the graduate
+        {/* the graduate */}
+        <img className="logo bg-light rounded" src={logo} alt="header-image" style={{width: "5rem"}}/>
       </a>
       <button
         className="navbar-toggler"
@@ -81,6 +85,7 @@ const Main = () => {
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
+
       {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
     </Switch>
   );
