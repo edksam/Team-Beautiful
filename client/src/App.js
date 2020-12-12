@@ -10,6 +10,7 @@ import GraduateList from "./components/graduates/GraduateList";
 import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
 import GraduateEdit from "./components/graduates/GraduateEdit";
+import SingleGraduate from "./components/graduates/SingleGraduate";
 
 function App() {
   return (
@@ -80,8 +81,9 @@ const Main = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
-      <Route exact path="/graduates/:_id" component={GraduateProfile} />
-      <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
+      <Route exact path="/graduates/:_id/preview" component={GraduateProfile} />
+      <Route />
+      <Route exact path="/graduates/:_id" component={SingleGraduate}></Route>
     </Switch>
   );
 };
