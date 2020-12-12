@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
+// import { falinkedinL } from '@fortawesome/free-brands-svg-icons'
 import {Container, Row, Col, Image} from 'react-bootstrap';
 import './PreviewProfile.css';
 
@@ -13,8 +17,8 @@ const PreviewProfile = ({ id }) => {
         fetch(`http://localhost:3001/api/graduates/${_id}`)
         .then(data => data.json())
         .then(data => setGraduate(data))
-        
-    
+
+
     }, [_id]);
     console.log(graduate, "test");
         if (!graduate) {
@@ -23,7 +27,7 @@ const PreviewProfile = ({ id }) => {
         return (
           <Example />
         )
-      
+
     function Example() {
   const [show, setShow] = useState(false);
 
@@ -35,7 +39,7 @@ const PreviewProfile = ({ id }) => {
       <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button>
-      
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
         <Modal.Title>
@@ -61,8 +65,8 @@ const PreviewProfile = ({ id }) => {
             </Col>
           </Row>
           <Row>
-            <Col>Available for: 
-              Full time: {graduate.full_time} 
+            <Col>Available for:
+              Full time: {graduate.full_time}
               Part time: {graduate.part_time}
               Contract: {graduate.contract}
               Temp: {graduate.temp}
@@ -70,17 +74,18 @@ const PreviewProfile = ({ id }) => {
           </Row>
           <p>Languages spoken: {graduate.languages}</p>
           <p>Working type: {graduate.full_time} {graduate.part_time} {graduate.contract} {graduate.temp}</p>
-          
+
           <hr />
 
           <Container>
             <Row className="rows">
               <Col xs={6} md={4} className="columns">
-                <i class="fa-lg fa-linkedin" fa-lg></i>
+              <i class="fa-fa fa-linkedin"></i>
                 <p>LinkedIn</p>
               </Col>
               <Col className="columns">
-                <Image src="#" roundedCircle /> 
+                {/* <Image src="#" roundedCircle /> */}
+                <i class="fas fa-globe"></i>
                 <p>Website</p>
               </Col>
             </Row>
@@ -90,7 +95,7 @@ const PreviewProfile = ({ id }) => {
                 <p>CV</p>
               </Col>
               <Col className="columns">
-                <i class="fa-lg fa-github"></i> 
+                <i class="fa-lg fa-github"></i>
                 <p>GitHub</p>
               </Col>
             </Row>

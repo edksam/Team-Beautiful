@@ -1,44 +1,45 @@
 import React, { useState } from "react";
 import logo from "../../images/logo.png";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
-const Home = ({ graduate }) => {
-  const [optionLocation, setOptionLocation] = useState("");
-  const [optionLanguages, setOptionLanguages] = useState("");
-  const [optionTypes, setOptionTypes] = useState("");
-  const [getOptions, setGetOptions] = useState("");
-
- ;
-
-  // const handleChangeLocation = (event) => {
-  //   setOptionLocation(event.target.value);
-  // };
-
-  // const handleChangeLanguages = (event) => {
-  //   setOptionLanguages(event.target.value);
-  // };
-  // const handleChangeTypes = (event) => {
-  //   setOptionTypes(event.target.value);
-  // };
-
+const Home = ({ id }) => {
+  //     const [data, setData] = useState([]);
+  //     const [loading, setLoading] = useState(true);
+  //     async function fetchUrl() {
+  //       const response = await fetch(`http://localhost:3001/api/graduates`);
+  //       console.log(response);
+  //       const json = await response.json();
+  //       setData(json);
+  //       setLoading(false);
+  //       console.log(data._id)
+  //     }
+  //     useEffect(() => {
+  //       fetchUrl("http://localhost:3001/api/graduates");
+  //     }, []);
+  //     console.log(data[0]);
+  // return [data, loading];
+  const [location, setLocation] = useState();
+  // const { _id } = useParams();
+  let myLocation;
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/api/graduates/`)
-      .then((response) => {
-        setGetOptions(response.data);
-        console.log(response);
-      })
-      .catch((error) => {
-        //Do something in case of error
+    fetch(`http://localhost:3001/api/graduates`)
+      .then((data) => data.json())
+      .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          myLocation = data[i];
+
+          return setLocation(myLocation);
+        }
       });
   }, []);
-  console.log("----------");
-  console.log(getOptions);
-  console.log("----------")
+  console.log(location);
+
+  // let modules= Object.keys(location);
+  // console.log(modules);
 
   return (
-
     <div className="container-fluid navbar-expand-lg">
       <div className="card-header container-fluid">
         <img
@@ -61,82 +62,80 @@ const Home = ({ graduate }) => {
           you.
         </p>
 
-        <div className="input-group d-flex justify-content-between">
-          <div class="form-group">
-            <select
-              class="form-control"
-              id="sel1"
-              value={optionLocation}
-              // onChange={handleChangeLocation}
-            >
-              <option>All Location</option>
-              {/* {
-            getOptions.map(([key, value], i) => (
-              <option key={i}>{key}</option>
-            ))} */}
-            </select>
+        <div className="container ">
+          <div className="form-row">
+            <div className="col-3">
+              <div class="form-group">
+                <input
+                  class="form-control mr-sm-2"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control mr-sm-2"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </div>
+            </div>
+            <div className="col-8 ml-4">
+              <div className="form-col">
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Full-Time
+                </label>
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Part-Time
+                </label>
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Internship
+                </label>
+              </div>
+              <div className="form-col">
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Remote
+                </label>
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Relocate
+                </label>
+                <label class="checkbox-inline mr-3">
+                  <input type="checkbox" value="" />
+                  Temp/Contract
+                </label>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <select
-              class="form-control"
-              id="sel1"
-              value={optionLanguages}
-              // onChange={handleChangeLanguages}
-            >
-              <option>Languages</option>
-              {/* {
-            graduate.map(([key, value], i) => (
-              <option key={i}>{key}</option>
-            ))} */}
-            </select>
-          </div>
-          <div class="form-group">
-            <select
-              class="form-control"
-              id="sel1"
-              value={optionTypes}
-              // onChange={handleChangeTypes}
-            >
-              <option>All Types</option>
-              {/* {
-            graduate.map(([key, value], i) => (
-              <option key={i}>{key}</option>
-            ))} */}
-            </select>
-          </div>
+          {/* <div className="container">
+    <div class="form-group">
+          <input/>
+    </div>
+        <div class="form-group">
+              <input/>
         </div>
-      </div>
 
-      <div className="container d-flex justify-content-around">
-        <div className="form-inline">
-          <div className="form-inline mr-4">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="willingRelocate"
-              name="wiling_relocate"
-              // value={graduate.willing_relocate}
-              // onChange={handleChange}
-            />
+  </div>
+      <div className="form-col">
 
-            <label className="form-check-label" for="willingRelocate">
-              Willing to relocate
-            </label>
-          </div>
-          <div className="form-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="openRemote"
-              name="willing_remote"
-              // value={graduate.willing_remote}
-              // onChange={handleChange}
-            />
 
-            <label className="form-check-label" for="openRemote">
-              Open to remote work
-            </label>
-          </div>
+              <div className="form-col">
+                  <label class="checkbox-inline"><input type="checkbox" value=""/>Option 1</label>
+                  <label class="checkbox-inline"><input type="checkbox" value=""/>Option 2</label>
+                   <label class="checkbox-inline"><input type="checkbox" value=""/>Option 3</label>
+              </div>
+              <div className="form-col">
+                  <label class="checkbox-inline"><input type="checkbox" value=""/>Option 1</label>
+                  <label class="checkbox-inline"><input type="checkbox" value=""/>Option 2</label>
+                   <label class="checkbox-inline"><input type="checkbox" value=""/>Option 3</label>
+              </div>
+      </div> */}
         </div>
       </div>
 
@@ -144,17 +143,14 @@ const Home = ({ graduate }) => {
         <div className="form-inline  d-flex justify-content-between">
           <div class="card" style={{ width: "18rem" }}>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title"> Card Title</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
               <a href="#" class="card-link">
-                Card link
-              </a>
-              <a href="#" class="card-link">
-                Another link
+                Read More
               </a>
             </div>
           </div>
