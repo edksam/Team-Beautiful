@@ -31,7 +31,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a href="/" className="navbar-brand">
-        the graduate
+        Graduate Directory
       </a>
       <button
         className="navbar-toggler"
@@ -61,7 +61,7 @@ const Navigation = () => {
               Graduates
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               exact
               className="nav-link"
@@ -70,7 +70,7 @@ const Navigation = () => {
             >
               Graduates Info
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
@@ -83,9 +83,8 @@ const Main = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
-      <Route exact path="/graduates/:_id" component={GraduateInfo} />
-      {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
-      <Route exact path="/graduates/profile" component={PreviewProfile} />
+      <Route exact path="/graduates/:_id" component={PreviewProfile} />
+      {/* <Route exact path="/graduates/profile" component={PreviewProfile} /> */}
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
     </Switch>
   );

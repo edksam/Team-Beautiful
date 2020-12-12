@@ -37,12 +37,12 @@ const GraduateList = () => {
         </h2>
         <hr />
       </div>
-      <Container fluid="md">
+      <Container style={{ display: "flex", flexDirection: "row" }}>
         <CardDeck>
           {graduates.map((graduate) => {
             return (
               <Row>
-                <Card className="text-center">
+                <Card className="text-center" style={{ flex: 1 , width:"22rem"}}>
                   <Card.Header>{graduate.fullname}</Card.Header>
                   <Card.Body>
                     <Card.Title>{graduate.headline}</Card.Title>

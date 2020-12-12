@@ -100,5 +100,5 @@ function GraduateEdit(props) {
     </div>
   );
 }
-
+//  Just to demonstarte github cycle
 export default GraduateEdit;
