@@ -9,7 +9,7 @@ import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
 import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
-import GraduateEdit from "./components/graduates/GraduateEdit";
+// import GraduateEdit from "./components/graduates/GraduateEdit";
 import SingleGraduate from "./components/graduates/SingleGraduate";
 
 function App() {
