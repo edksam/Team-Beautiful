@@ -102,4 +102,3 @@ function GraduateEdit(props) {
 }
 //  Just to demonstarte github cycle
 export default GraduateEdit;
-git
