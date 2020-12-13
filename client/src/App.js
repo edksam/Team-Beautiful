@@ -7,9 +7,12 @@ import {
 } from "react-router-dom";
 import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
-import GraduateProfile from "./components/graduates/GraduateProfile";
+// import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
+// import GraduateEdit from "./components/graduates/GraduateEdit";
+import GraduateInfo from "./components/graduates/GraduateInfo";
 import GraduateEdit from "./components/graduates/GraduateEdit";
+import PreviewProfile from "./PreviewProfile";
 
 function App() {
   return (
@@ -28,7 +31,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a href="/" className="navbar-brand">
-        the graduate
+        Graduate Directory
       </a>
       <button
         className="navbar-toggler"
@@ -58,16 +61,16 @@ const Navigation = () => {
               Graduates
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               exact
               className="nav-link"
               activeClassName="active"
               to="/graduates/:_id"
             >
-              Graduates Profile
+              Graduates Info
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
@@ -80,7 +83,8 @@ const Main = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
-      <Route exact path="/graduates/:_id" component={GraduateProfile} />
+      <Route exact path="/graduates/:_id" component={PreviewProfile} />
+      {/* <Route exact path="/graduates/profile" component={PreviewProfile} /> */}
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
     </Switch>
   );
