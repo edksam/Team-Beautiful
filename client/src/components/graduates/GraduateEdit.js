@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { get } from "axios";
+import React from "react";
+
 
 const GraduateEdit = () => {
   // const [graduates, setGraduates] = useState([]);

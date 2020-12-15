@@ -16,6 +16,8 @@ const GraduateList = () => {
     }
     getGraduates();
   }, []);
+  // let main = localStorage.getItem("item")
+  // console.log(main)
 
   return (
     <div>

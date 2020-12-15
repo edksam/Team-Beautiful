@@ -7,16 +7,17 @@ import {
 } from "react-router-dom";
 import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
-import GraduateProfile from "./components/graduates/GraduateProfile";
+// import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
 import GraduateEdit from "./components/graduates/GraduateEdit";
-import PreviewProfile from "./PreviewProfile";
+import PreviewProfile from "./components/graduates/PreviewProfile";
 
 // import GraduateEdit from "./components/graduates/GraduateEdit";
 import GraduateInfo from "../src/components/graduates/GraduateInfo";
 // import Logo
 import logo from "./images/logo.png"
 // import HomePage from "./components/graduates/GraduateHomePage";
+import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
 function App() {
   return (
     <div>
@@ -35,7 +36,7 @@ const Navigation = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a href="/" className="navbar-brand">
         {/* the graduate */}
-        <img className="logo bg-light rounded" src={logo} alt="header-image" style={{width: "5rem"}}/>
+        <img className="logo bg-light rounded" src={logo} alt="header-logo" style={{width: "5rem"}}/>
       </a>
       <button
         className="navbar-toggler"
@@ -101,7 +102,7 @@ const Main = () => {
       {/* <Route exact path="/graduates/:_id" component={GraduateProfile} /> */}
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
-
+      <Route exact path= "/graduates/:_id/profile" component= {GraduateInformationDisplay}/>
       {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
     </Switch>
   );
