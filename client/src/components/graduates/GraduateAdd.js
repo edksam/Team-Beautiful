@@ -32,6 +32,7 @@ function GraduateAdd(props) {
       try {
         const response = await post("/api/graduates", graduate);
         props.history.push(`/graduates/${response.data._id}`);
+
       } catch (error) {
         console.log("error", error);
       }
@@ -39,9 +40,9 @@ function GraduateAdd(props) {
     postgraduate();
   }
 
-  function handleCancel() {
-    props.history.push("/graduates");
-  }
+  // function handleCancel() {
+  //   props.history.push("/graduates");
+  // }
 
   return (
     <div>
