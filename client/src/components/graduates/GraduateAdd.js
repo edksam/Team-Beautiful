@@ -46,7 +46,7 @@ function GraduateAdd(props) {
 
   return (
     <div>
-      <h1>Create graduate</h1>
+      <h1>Create Profile</h1>
       <hr />
       <form onSubmit={handleSubmit}>
         <div className="container">
@@ -181,9 +181,9 @@ function GraduateAdd(props) {
                 <br />
                 <br />
 
-                <div className="custom-control custom-switch">
+                <div className="custom-control-inline custom-switch">
                   <input
-                    className="form-check-input"
+                    className="custom-control-input"
                     type="checkbox"
                     id="willingRelocate"
                     name="wiling_relocate"
@@ -191,21 +191,21 @@ function GraduateAdd(props) {
                     onChange={handleChange}
                   />
 
-                  <label className="form-check-label" for="willingRelocate">
+                  <label className="custom-control-label" for="willingRelocate">
                     Willing to relocate
                   </label>
                 </div>
 
-                <div className="form-check-inline form-switch">
+                <div className="custom-control-inline custom-switch">
                   <input
-                    className="form-check-input"
+                    className="custom-control-input"
                     type="checkbox"
                     id="openRemote"
                     name="willing_remote"
                     value={graduate.willing_remote}
                     onChange={handleChange}
                   />
-                  <label className="form-check-label" for="openRemote">
+                  <label className="custom-control-label" for="openRemote">
                     Open to remote work
                   </label>
                 </div>
