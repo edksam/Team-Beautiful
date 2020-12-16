@@ -16,6 +16,8 @@ const GraduateList = () => {
     }
     getGraduates();
   }, []);
+  // let main = localStorage.getItem("item")
+  // console.log(main)
 
   return (
     <div>
@@ -26,17 +28,45 @@ const GraduateList = () => {
         </Link>
       </h2>
       <hr />
-      {graduates.map((graduate) => {
-        return (
-          <div key={graduate._id}>
-            <h4>
-              <Link to={`/graduates/${graduate._id}`}>{graduate.fullname}</Link>
-            </h4>
-            <small>_id: {graduate._id}</small>
-            <hr />
-          </div>
-        );
-      })}
+      <table  className="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" className="top-row">
+              _id
+            </th>
+            <th scope="col" className="top-row">
+              First name
+            </th>
+          </tr>
+        </thead>
+
+        {graduates
+          .sort((a, b) => (a.fullname > b.fullname ? 1 : -1))
+          .map((graduate) => {
+            return (
+              // <div key={graduate._id}>
+              //   <h4>
+              //     <Link to={`/graduates/${graduate._id}`}>{graduate.fullname}</Link>
+              //   </h4>
+              //   <small>_id: {graduate._id}</small>
+              //   <hr />
+              // </div>
+
+              <tbody key={graduate._id}>
+                <tr>
+                  <th scope="row">{graduate._id}</th>
+
+                  <td>
+                    {" "}
+                    <Link to={`/graduates/${graduate._id}`}>
+                      {graduate.fullname}
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            );
+          })}
+      </table>
     </div>
   );
 };
