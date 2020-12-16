@@ -23,7 +23,7 @@ import GraduateInformationDisplay from "././components/graduates/GraduateInforma
 // import GraduateEdit from "./components/graduates/GraduateEdit";
 // import GraduateInfo from "./components/graduates/GraduateInfo";
 import GraduateEdit from "./components/graduates/GraduateEdit";
-import PreviewProfile from "./PreviewProfile";
+import PreviewProfile from "../src/components/graduates/PreviewProfile";
 import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "./components/utility/logo.png";
