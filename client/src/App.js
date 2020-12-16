@@ -9,7 +9,6 @@ import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
 // import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
-<<<<<<< HEAD
 import GraduateEdit from "./components/graduates/GraduateEdit";
 import PreviewProfile from "./components/graduates/PreviewProfile";
 
@@ -19,16 +18,6 @@ import GraduateInfo from "../src/components/graduates/GraduateInfo";
 import logo from "./images/logo.png"
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
-=======
-// import GraduateEdit from "./components/graduates/GraduateEdit";
-// import GraduateInfo from "./components/graduates/GraduateInfo";
-import GraduateEdit from "./components/graduates/GraduateEdit";
-import PreviewProfile from "../src/components/graduates/PreviewProfile";
-import { Nav, Navbar } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import logo from "./components/utility/logo.png";
-
->>>>>>> edksam-ebenezer-beautiful
 function App() {
   return (
     <div>
@@ -110,16 +99,11 @@ const Main = () => {
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
-<<<<<<< HEAD
       {/* <Route exact path="/graduates/:_id" component={GraduateProfile} /> */}
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
       <Route exact path= "/graduates/:_id/profile" component= {GraduateInformationDisplay}/>
       {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
-=======
-      {/* <Route exact path="/graduates/profile" component={PreviewProfile} /> */}
-      <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
->>>>>>> edksam-ebenezer-beautiful
     </Switch>
   );
 };
