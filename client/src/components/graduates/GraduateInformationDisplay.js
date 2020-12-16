@@ -8,10 +8,7 @@ import ShowMoreText from "react-show-more-text";
 
 
 
-const GraduateInformationDisplay = ({ filteredData }) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
+const GraduateInformationDisplay = () => {
 
   const executeOnClick = (isExpanded) => {
     console.log(isExpanded);
@@ -34,7 +31,7 @@ const GraduateInformationDisplay = ({ filteredData }) => {
   }
   return (
     <Modal.Dialog className="border-dark">
-      <Modal.Header show={show} onHide={handleClose} closeButton>
+      <Modal.Header>
         <Modal.Title>
           <Container>
             <Row className="rows">
@@ -66,10 +63,11 @@ const GraduateInformationDisplay = ({ filteredData }) => {
         </Row>
         <Row className="justify-content-center mt-3">
           <Col>
-            Full Time,{graduate.full_time}
-            Part time, {graduate.part_time}
-            Contract,{graduate.contract}
-            Temp: {graduate.temp}
+
+           {graduate.full_time ? "Full Time" : ""}
+            {graduate.part_time ?"Part Time" : ""}
+           {graduate.contract ? "Contract" :""}
+           {graduate.temp ? "Temp" : ""}
           </Col>
         </Row>
 
