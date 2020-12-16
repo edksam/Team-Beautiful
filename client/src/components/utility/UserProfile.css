@@ -1,0 +1,32 @@
+.user-profile-container {
+  background-color: #222;
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.15s transform ease;
+  cursor: pointer;
+}
+
+.user-profile-container:hover {
+  transform: scale(1.1);
+}
+
+.user-profile-avatar {
+  border-radius: 100px;
+  margin: 0 auto;
+  display: block;
+  width: 65px;
+}
+
+.user-profile-name {
+  font-size: 17px;
+}
+
+.user-profile-location {
+  opacity: 0.4;
+  margin-top: 0;
+  font-size: 15px;
+  line-height: 0;
+}
