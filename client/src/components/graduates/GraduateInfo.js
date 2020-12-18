@@ -30,7 +30,7 @@ const GraduateInfo = (props) => {
       console.error(error);
     }
   }
-
+  
   return (
     <div>
       <h2>{graduate.fullname}</h2>
