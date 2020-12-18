@@ -105,9 +105,12 @@ const Main = () => {
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
 
+
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
       <Route exact path= "/graduates/:_id/profile" component= {GraduateInformationDisplay}/>
+
+
 
     </Switch>
   );
