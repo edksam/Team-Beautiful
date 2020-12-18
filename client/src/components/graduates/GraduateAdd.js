@@ -13,6 +13,7 @@ function GraduateAdd(props) {
     temp: false,
     willing_relocate: false,
     willing_remote: false,
+    internship: false,
     linkedin: "",
     upload_cv: "",
     resume_textarea: "",
@@ -22,7 +23,10 @@ function GraduateAdd(props) {
   const [graduate, setGraduate] = useState(initialState);
 
   function handleChange(event) {
-    setGraduate({ ...graduate, [event.target.name]: event.target.value });
+    setGraduate({
+      ...graduate,
+      [event.target.name]: event.target.value || event.target.checked,
+    });
   }
 
   function handleSubmit(event) {
@@ -32,7 +36,6 @@ function GraduateAdd(props) {
       try {
         const response = await post("/api/graduates", graduate);
         props.history.push(`/graduates/${response.data._id}`);
-
       } catch (error) {
         console.log("error", error);
       }
@@ -207,6 +210,20 @@ function GraduateAdd(props) {
                   />
                   <label className="custom-control-label" for="openRemote">
                     Open to remote work
+                  </label>
+                </div>
+
+                <div className="custom-control-inline custom-switch">
+                  <input
+                    className="custom-control-input"
+                    type="checkbox"
+                    id="internship"
+                    name="internship"
+                    value={graduate.internship}
+                    onChange={handleChange}
+                  />
+                  <label className="custom-control-label" for="internship">
+                    Internship
                   </label>
                 </div>
               </div>
