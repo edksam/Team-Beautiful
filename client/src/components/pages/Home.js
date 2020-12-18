@@ -387,7 +387,7 @@ const Home = () => {
           <div className="row mb-2">
             {filteredData.map((graduate) => {
               return (
-                <div className="col-md-6 card-text-left text-white bg-primary">
+                <div className="col-md-6 card-text-left border-success">
                   <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
                     <div className="col p-4 d-flex flex-column">
                       <strong className="d-inline-block mb-2 text-success">
@@ -447,10 +447,57 @@ const Home = () => {
                         </p>
                       </div>
 
+                      <hr />
+
+                      <div className="container">
+                        <div class="row justify-content-around ">
+                          <div class="col-4">
+                            <i class="fab fa-linkedin fa-2x"></i>
+
+                            <Link
+                              className="ml-2"
+                              style={{ fontSize: "65%" }}
+                              target="_blank"
+                              rel="noreferrer"
+                              href={""}
+                            >
+                              LinkedIn
+                            </Link>
+                          </div>
+                          <div class="col-4 mt-1">
+                            <i class="fas fa-globe fa-2x"> </i>
+
+                            <Link
+                              className="ml-2"
+                              style={{ fontSize: "70%" }}
+                              to={graduate.linkedin}
+                            >
+                              Website
+                            </Link>
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-around  ">
+                          <div class="col-4 ">
+                            <i class="fas fa-file-csv fa-2x"></i>
+                            <Link className="ml-2" style={{ fontSize: "80%" }}>
+                              cv
+                            </Link>
+                          </div>
+                          <div class="col-4 mt-1">
+                            <i class="fab fa-github fa-2x"></i>
+                            <a className="ml-2" style={{ fontSize: "70%" }}>
+                              {" "}
+                              GitHub
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
                       <p className="mb-0">{graduate.resume_textarea}</p>
-                      <a href="#" className="stretched-link">
+                      <Link href="#" className="stretched-link">
                         View Profile
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

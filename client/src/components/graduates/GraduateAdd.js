@@ -7,6 +7,13 @@ function GraduateAdd(props) {
     headline: "",
     current_location: "",
     languages: "",
+    linkedin: "",
+    upload_cv: "",
+    resume_textarea: "",
+    website: "",
+    mobile: "",
+  };
+  const initialCheckBoxState = {
     full_time: false,
     part_time: false,
     contract: false,
@@ -14,18 +21,20 @@ function GraduateAdd(props) {
     willing_relocate: false,
     willing_remote: false,
     internship: false,
-    linkedin: "",
-    upload_cv: "",
-    resume_textarea: "",
-    website: "",
-    mobile: "",
   };
   const [graduate, setGraduate] = useState(initialState);
+  const [checkBox, setCheckBox] = useState(initialCheckBoxState);
 
   function handleChange(event) {
     setGraduate({
       ...graduate,
-      [event.target.name]: event.target.value || event.target.checked,
+      [event.target.name]: event.target.value,
+    });
+  }
+  function handleCheckBox(event) {
+    setCheckBox({
+      ...checkBox,
+      [event.target.name]: !checkBox[event.target.value],
     });
   }
 
@@ -34,7 +43,7 @@ function GraduateAdd(props) {
     if (!graduate.fullname || !graduate.current_location) return;
     async function postgraduate() {
       try {
-        const response = await post("/api/graduates", graduate);
+        const response = await post("/api/graduates", graduate, checkBox);
         props.history.push(`/graduates/${response.data._id}`);
       } catch (error) {
         console.log("error", error);
@@ -128,7 +137,7 @@ function GraduateAdd(props) {
                     name="contract"
                     id="fulltime"
                     value={graduate.full_time}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
 
                   <label className="form-check-label" for="fulltime">
@@ -143,7 +152,7 @@ function GraduateAdd(props) {
                     name="contract"
                     id="parttime"
                     value={graduate.part_time}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
 
                   <label className="form-check-label" for="parttime">
@@ -158,7 +167,7 @@ function GraduateAdd(props) {
                     name="contract"
                     id="contract"
                     value={graduate.contract}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
 
                   <label className="form-check-label" for="contract">
@@ -173,7 +182,7 @@ function GraduateAdd(props) {
                     name="temp"
                     id="temp"
                     value={graduate.temp}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
 
                   <label className="form-check-label" for="temp">
@@ -191,7 +200,7 @@ function GraduateAdd(props) {
                     id="willingRelocate"
                     name="wiling_relocate"
                     value={graduate.willing_relocate}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
 
                   <label className="custom-control-label" for="willingRelocate">
@@ -206,7 +215,7 @@ function GraduateAdd(props) {
                     id="openRemote"
                     name="willing_remote"
                     value={graduate.willing_remote}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
                   <label className="custom-control-label" for="openRemote">
                     Open to remote work
@@ -220,7 +229,7 @@ function GraduateAdd(props) {
                     id="internship"
                     name="internship"
                     value={graduate.internship}
-                    onChange={handleChange}
+                    onChange={handleCheckBox}
                   />
                   <label className="custom-control-label" for="internship">
                     Internship
