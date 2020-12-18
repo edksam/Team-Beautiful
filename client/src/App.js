@@ -18,6 +18,7 @@ import GraduateInfo from "../src/components/graduates/GraduateInfo";
 import logo from "./images/logo.png"
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
+
 function App() {
   return (
     <div>
