@@ -19,7 +19,7 @@ const graduateSchema = new mongoose.Schema({
   languages: {
     type: String,
   },
-  
+
   // Enumurated Type To Type
   full_time: {
     type: Boolean,
@@ -52,8 +52,10 @@ const graduateSchema = new mongoose.Schema({
     type: String,
   },
   upload_cv: {
-    data: Buffer,
-    contentType: String,
+    // data: Buffer,
+    // contentType: String,
+    type: String,
+
   },
   resume_textarea: {
     type: String,

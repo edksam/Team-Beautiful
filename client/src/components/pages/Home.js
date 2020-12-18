@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import logo from "../../images/logo.png";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 
-const Home = () => {
+function shuffleArray(array) {
+  let i = array.length - 1;
+  for (; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
+
+const Home = ({interval = 2000}) => {
   const [location, setLocation] = useState("");
   const [language, setLanguage] = useState("");
+  const [currentQuote, setCurrentQuote] = useState();
+  const getRandIndex = arr => Math.floor(Math.random() * arr.length);
+
+  /**
+   * Select a quote at random and remove from the current list of
+   * selectable quotes, reducing the array length by 1
+   */
+
   const initialState = {
     full_time: false,
     part_time: false,
@@ -85,9 +105,23 @@ const Home = () => {
     );
 
   console.log(filteredData);
+  const randomShuffle = shuffleArray(filteredData);
+
+//see if it works
+// useEffect(() => {
+//   const i = setInterval(() => {
+//      setData(([first, ...rest]) => [...rest, first]);
+//   }, 1000);
+
+//   return () => clearInterval(i);
+// }, []);
+// console.log(data);
+// console.log(currentQuote);
+
+
   return (
     <div className="container-fluid navbar-expand-lg">
-      <div className="card-header container-fluid">
+      {/* <div className="card-header container-fluid">
         <img
           className="logo bg-light rounded"
           src={logo}
@@ -98,7 +132,7 @@ const Home = () => {
           <h6 className="mr-4">CYF Login</h6>
           <h6>Student Login</h6>
         </div>
-      </div>
+      </div> */}
 
       <div className="container">
         <h4 className="display-3">Graduates Directory</h4>
@@ -119,7 +153,6 @@ const Home = () => {
                   onChange={handleLocation}
                   placeholder="Location"
                   aria-label="Search"
-
                 />
               </div>
               <div class="form-group">
@@ -197,16 +230,16 @@ const Home = () => {
       </div>
 
       <div className="container d-flex justify-content-space-evenly flex-wrap">
-        {filteredData.length > 0 &&
-          filteredData.map((obj, _id) => {
+        {randomShuffle.length > 0 &&
+          randomShuffle.map((obj, _id) => {
             return (
               <div
                 className="col  d-flex justify-content-space-evenly mb-5 "
                 key={obj._id}
               >
                 <div
-                  class="row border border-dark mx -3"
-                  style={{ width: "25rem" }}
+                  class="row border border-dark mx -3 "
+                  style={{ width: "30rem" }}
                 >
                   <div className="card-body ">
                     <h4 className="float-right">
@@ -216,11 +249,83 @@ const Home = () => {
                         </Link>
                       }
                     </h4>
-                    <h5 class="card-title">{obj.fullname}</h5>
+                    <h5 class="card-title text-center text-info">{obj.fullname}</h5>
                     <p>Languages:{obj.languages}</p>
                     <p> HeadLine: {obj.headline}</p>
+                    <hr />
                     <p class="card-text">Location:{obj.current_location}</p>
 
+                    <div class="row justify-content-around">
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-sm mr-1"
+                        >
+                          {" "}
+                          Open to relocation
+                        </button>
+                      </div>
+                      <div class="col-5">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-sm mr-1"
+                        >
+                          {" "}
+                          Open to remote
+                        </button>
+                      </div>
+                    </div>
+
+                    <p class="card-text">{obj.full_time ? "Full Time" : ""}</p>
+                    <p class="card-text">{obj.part_time ? "Part Time" : ""}</p>
+                    <p class="card-text">
+                      {obj.willing_relocate ? "Open to Relocate" : ""}
+                    </p>
+                    <p class="card-text">
+                      {obj.willing_remote ? "Open to Remote" : ""}
+                    </p>
+
+                    <hr />
+
+                    <div className="container">
+                      <div class="row justify-content-around ">
+                    <div class="col-4">
+                          <i class="fab fa-linkedin fa-2x"></i>
+
+                          <a
+                            className="ml-2"
+                            style={{ fontSize: "65%" }}
+                            target="_blank"
+                            rel="noreferrer"
+                            href={"http://"+ obj.linkedin}
+                          >LinkedIn</a>
+                        </div>
+                     <div class="col-4 mt-1">
+                          <i class="fas fa-globe fa-2x"> </i>
+
+                          <a
+                            className="ml-2"
+                            style={{ fontSize: "70%" }}
+                            href={"http://"+ obj.website}
+                          >Website</a>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-around  ">
+                     <div class="col-4 ">
+                          <i class="fas fa-file-csv fa-2x"></i>
+                          <a className="ml-2" style={{ fontSize: "80%" }} href={"http://"+ obj.upload_cv} >cv</a>
+
+                        </div>
+                       <div class="col-4 mt-1">
+                          <i class="fab fa-github fa-2x"></i>
+                          <a className="ml-2" style={{ fontSize: "70%" }} href={"http://"+ obj.github}> GitHub</a>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr />
                     <ShowMoreText
                       lines={3}
                       more={
@@ -239,10 +344,7 @@ const Home = () => {
                       expanded={false}
                       width={350}
                     >
-                      <p class="card-text">Resume:{obj.resume}</p>
-                      <p class="card-text">LinkedIn:{obj.linkedin}</p>
-                      <p class="card-text">Website:{obj.website}</p>
-                      <p class="card-text">GitHub:{obj.github}</p>
+
                       <p class="card-subtitle mb-2 text-dark">
                         {obj.resume_textarea}
                       </p>
