@@ -19,6 +19,8 @@ const graduateSchema = new mongoose.Schema({
   languages: {
     type: String,
   },
+  
+  // Enumurated Type To Type
   full_time: {
     type: Boolean,
   },
