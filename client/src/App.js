@@ -9,7 +9,6 @@ import Home from "./components/pages/Home";
 import GraduateList from "./components/graduates/GraduateList";
 // import GraduateProfile from "./components/graduates/GraduateProfile";
 import GraduateAdd from "./components/graduates/GraduateAdd";
-<<<<<<< HEAD
 import GraduateEdit from "./components/graduates/GraduateEdit";
 import PreviewProfile from "./components/graduates/PreviewProfile";
 
@@ -19,16 +18,6 @@ import GraduateInfo from "../src/components/graduates/GraduateInfo";
 import logo from "./images/logo.png"
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
-=======
-// import GraduateEdit from "./components/graduates/GraduateEdit";
-// import GraduateInfo from "./components/graduates/GraduateInfo";
-import GraduateEdit from "./components/graduates/GraduateEdit";
-import PreviewProfile from "./PreviewProfile";
-import { Nav, Navbar } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import logo from "./components/utility/logo.png";
-
->>>>>>> edksam-ebenezer-beautiful
 function App() {
   return (
     <div>
@@ -44,7 +33,7 @@ function App() {
 
 const Navigation = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
       <a href="/" className="navbar-brand">
         {/* the graduate */}
         <img className="logo bg-light rounded" src={logo} alt="header-logo" style={{width: "5rem"}}/>
@@ -61,6 +50,10 @@ const Navigation = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarToggler">
+      {/* <div className="d-flex justify-content-end">
+          <h6 className="mr-4">CYF Login</h6>
+          <h6>Student Login</h6>
+        </div> */}
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <NavLink exact className="nav-link" activeClassName="active" to="/">
@@ -82,9 +75,9 @@ const Navigation = () => {
               exact
               className="nav-link"
               activeClassName="active"
-              to="/graduates/:_id"
+              to=""
             >
-              Graduates Info
+              {/* CYF Login */}
             </NavLink>
           </li>
           <li className="nav-item">
@@ -92,9 +85,9 @@ const Navigation = () => {
               exact
               className="nav-link"
               activeClassName="active"
-              to="/graduates/:_id/profile"
+              to=""
             >
-             Profile Preview
+            Login
             </NavLink>
           </li>
         </ul>
@@ -110,16 +103,11 @@ const Main = () => {
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
-<<<<<<< HEAD
-      {/* <Route exact path="/graduates/:_id" component={GraduateProfile} /> */}
+
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
       <Route exact path= "/graduates/:_id/profile" component= {GraduateInformationDisplay}/>
-      {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
-=======
-      {/* <Route exact path="/graduates/profile" component={PreviewProfile} /> */}
-      <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
->>>>>>> edksam-ebenezer-beautiful
+
     </Switch>
   );
 };
