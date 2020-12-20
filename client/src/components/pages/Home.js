@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "../../bootstrap.min.css";
 import "../../index.css";
@@ -9,6 +10,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
@@ -24,9 +26,19 @@ function shuffleArray(array) {
   return array;
 }
 
+
 const Home = () => {
+
   const [location, setLocation] = useState("");
   const [language, setLanguage] = useState("");
+  const [currentQuote, setCurrentQuote] = useState();
+  const getRandIndex = arr => Math.floor(Math.random() * arr.length);
+
+  /**
+   * Select a quote at random and remove from the current list of
+   * selectable quotes, reducing the array length by 1
+   */
+
   const initialState = {
     full_time: false,
     part_time: false,
@@ -112,147 +124,79 @@ const Home = () => {
     );
 
   console.log(filteredData);
+  const randomShuffle = shuffleArray(filteredData);
+
+//see if it works
+// useEffect(() => {
+//   const i = setInterval(() => {
+//      setData(([first, ...rest]) => [...rest, first]);
+//   }, 1000);
+
+//   return () => clearInterval(i);
+// }, []);
+// console.log(data);
+// console.log(currentQuote);
+
+
   return (
-    <>
-      <div className="container-fluid">
-        <div className="jumbotron text-center">
-          <h1 className="display-3">Graduate Directory</h1>
-          <p className="lead">
-            Our amazing and talented graduates are looking for new
-            opportunities. Check out our graduate directory to see if they may
-            be right fit for you
-          </p>
+    <div className="container-fluid navbar-expand-lg">
+      {/* <div className="card-header container-fluid">
+        <img
+          className="logo bg-light rounded"
+          src={logo}
+          alt="header-logo"
+          style={{ width: "5rem" }}
+        />
+        <div className="d-flex justify-content-end">
+          <h6 className="mr-4">CYF Login</h6>
+          <h6>Student Login</h6>
+        </div>
+      </div> */}
 
-          <hr className="my-4" />
-          <Container>
-            <Row>
-              <Col sm>
-                <div>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                      <InputGroup.Text id="inputGroup-sizing-default">
-                        Location
-                      </InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl
-                      aria-label="Search"
-                      aria-describedby="inputGroup-sizing-default"
-                      name="location"
-                      value={location}
-                      onChange={handleLocation}
-                      placeholder="Search Location"
-                    />
-                  </InputGroup>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                      <InputGroup.Text id="inputGroup-sizing-default">
-                        Language
-                      </InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl
-                      aria-label="Search Language"
-                      aria-describedby="inputGroup-sizing-default"
-                      name="Language"
-                      value={language}
-                      onChange={handleLanguage}
-                      placeholder="Search Languages"
-                    />
-                  </InputGroup>
-                </div>
-              </Col>
-              <Col sm>
-                <div class="form-group col-sm-4">
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="full_time"
-                      name="full_time"
-                      value={full_time}
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="full_time">
-                      Fulltime
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="part_time"
-                      name="part_time"
-                      value={part_time}
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="part_time">
-                      Part time
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="internship"
-                      name="internship"
-                      value={internship}
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="internship">
-                      Internship
-                    </label>
-                  </div>
-                </div>
-              </Col>
-              <Col sm>
-                <div class="form-group col-sm-4">
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="remote"
-                      name="willing_remote"
-                      value={willing_remote}
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="remote">
-                      Remote
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="relocate"
-                      name="willing_relocate"
-                      value={willing_relocate}
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="relocate">
-                      Relocate
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      id="contract"
-                      class="custom-control-input"
-                      name="contract"
-                      value={contract}
-                      type="checkbox"
-                      onChange={handleCheckBox}
-                    />
-                    <label class="custom-control-label" for="contract">
-                      Temp / Contract
-                    </label>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-
-          {/* <div className="container ">
-            <div className="form-row">
-              <div className="col-3">
-                <div class="form-group">
+      <div className="container">
+        <h4 className="display-3">Graduates Directory</h4>
+        <p>
+          Our amazing and talented graduates are looking for new opportunities.
+          Check out our graduate directory to see if they may be right fit for
+          you
+        </p>
+        <div className="container ">
+          <div className="form-row">
+            <div className="col-3">
+              <div class="form-group">
+                <input
+                  class="form-control mr-sm-2"
+                  type="text"
+                  name="Location"
+                  value={location}
+                  onChange={handleLocation}
+                  placeholder="Location"
+                  aria-label="Search"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control mr-sm-2"
+                  type="text"
+                  placeholder="Language"
+                  aria-label="Search"
+                  value={language}
+                  onChange={handleLanguage}
+                />
+              </div>
+            </div>
+            <div className="col-8 ml-4">
+              <div className="form-col">
+                <label class="checkbox-inline mr-3">
+                  <input
+                    type="checkbox"
+                    name="full_time"
+                    value={full_time}
+                    onChange={handleCheckBox}
+                  />
+                  Full-Time
+                </label>
+                <label class="checkbox-inline mr-3">
                   <input
                     class="form-control mr-sm-2"
                     type="text"
@@ -338,60 +282,126 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <div className="container main">
-        <div className="container d-flex justify-content-space-evenly flex-wrap">
-          {filteredData.length > 0 &&
-            filteredData.map((graduate, _id) => {
-              return (
-
+      <div className="container d-flex justify-content-space-evenly flex-wrap">
+        {randomShuffle.length > 0 &&
+          randomShuffle.map((obj, _id) => {
+            return (
+              <div
+                className="col  d-flex justify-content-space-evenly mb-5 "
+                key={obj._id}
+              >
                 <div
-                  className="col d-flex justify-content-space-evenly mb-5 "
-                  key={graduate._id}
+                  class="row border border-dark mx -3 "
+                  style={{ width: "30rem" }}
                 >
-                  <div
-                    class="row border border-dark mx -3"
-                    style={{ width: "25rem" }}
-                  >
-                    <div className="card-body ">
-                      <h4 className="float-right">
-                        {
-                          <Link to={`/graduates/${graduate._id}/profile`}>
-                            <i class="fas fa-share-square"></i>
-                          </Link>
-                        }
-                      </h4>
-                      <h5 class="card-title">{graduate.fullname}</h5>
-                      <p>Languages:{graduate.languages}</p>
-                      <p> HeadLine: {graduate.headline}</p>
-                      <p class="card-text">Location:{graduate.current_location}</p>
+                  <div className="card-body ">
+                    <h4 className="float-right">
+                      {
+                        <Link to={`/graduates/${obj._id}/profile`}>
+                          <i class="fas fa-share-square"></i>
+                        </Link>
+                      }
+                    </h4>
+                    <h5 class="card-title text-center text-info">{obj.fullname}</h5>
+                    <p>Languages:{obj.languages}</p>
+                    <p> HeadLine: {obj.headline}</p>
+                    <hr />
+                    <p class="card-text">Location:{obj.current_location}</p>
 
-                      <ShowMoreText
-                        lines={3}
-                        more={
-                          <button type="button" class="btn btn-primary btn-sm">
-                            Show more
-                          </button>
-                        }
-                        less={
-                          <button type="button" class="btn btn-primary btn-sm">
-                            Show less
-                          </button>
-                        }
-                        className="content-css"
-                        anchorClass="my-anchor-css-class"
-                        onClick={executeOnClick}
-                        expanded={false}
-                        width={350}
-                      >
-                        <p class="card-text">Resume:{graduate.resume}</p>
-                        <p class="card-text">LinkedIn:{graduate.linkedin}</p>
-                        <p class="card-text">Website:{graduate.website}</p>
-                        <p class="card-text">GitHub:{graduate.github}</p>
-                        <p class="card-subtitle mb-2 text-dark">
-                          {graduate.resume_textarea}
-                        </p>
-                      </ShowMoreText>
+                    <div class="row justify-content-around">
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-sm mr-1"
+                        >
+                          {" "}
+                          Open to relocation
+                        </button>
+                      </div>
+                      <div class="col-5">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-sm mr-1"
+                        >
+                          {" "}
+                          Open to remote
+                        </button>
+                      </div>
                     </div>
+
+                    <p class="card-text">{obj.full_time ? "Full Time" : ""}</p>
+                    <p class="card-text">{obj.part_time ? "Part Time" : ""}</p>
+                    <p class="card-text">
+                      {obj.willing_relocate ? "Open to Relocate" : ""}
+                    </p>
+                    <p class="card-text">
+                      {obj.willing_remote ? "Open to Remote" : ""}
+                    </p>
+
+                    <hr />
+
+                    <div className="container">
+                      <div class="row justify-content-around ">
+                    <div class="col-4">
+                          <i class="fab fa-linkedin fa-2x"></i>
+
+                          <a
+                            className="ml-2"
+                            style={{ fontSize: "65%" }}
+                            target="_blank"
+                            rel="noreferrer"
+                            href={"http://"+ obj.linkedin}
+                          >LinkedIn</a>
+                        </div>
+                     <div class="col-4 mt-1">
+                          <i class="fas fa-globe fa-2x"> </i>
+
+                          <a
+                            className="ml-2"
+                            style={{ fontSize: "70%" }}
+                            href={"http://"+ obj.website}
+                          >Website</a>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-around  ">
+                     <div class="col-4 ">
+                          <i class="fas fa-file-csv fa-2x"></i>
+                          <a className="ml-2" style={{ fontSize: "80%" }} href={"http://"+ obj.upload_cv} >cv</a>
+
+                        </div>
+                       <div class="col-4 mt-1">
+                          <i class="fab fa-github fa-2x"></i>
+                          <a className="ml-2" style={{ fontSize: "70%" }} href={"http://"+ obj.github}> GitHub</a>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr />
+                    <ShowMoreText
+                      lines={3}
+                      more={
+                        <button type="button" class="btn btn-primary btn-sm">
+                          Show more
+                        </button>
+                      }
+                      less={
+                        <button type="button" class="btn btn-primary btn-sm">
+                          Show less
+                        </button>
+                      }
+                      className="content-css"
+                      anchorClass="my-anchor-css-class"
+                      onClick={executeOnClick}
+                      expanded={false}
+                      width={350}
+                    >
+
+                      <p class="card-subtitle mb-2 text-dark">
+                        {obj.resume_textarea}
+                      </p>
+                    </ShowMoreText>
                   </div>
                 </div>
               );

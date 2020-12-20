@@ -4,10 +4,25 @@ import { Container, Row, Col, Modal, Button, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import ShowMoreText from "react-show-more-text";
 
+
 const GraduateInformationDisplay = ({ filteredData }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+
+  //extracting the root domain here
+  //if there is a subdomain
+  if (arrLen > 2) {
+      domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+      //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
+      if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
+          //this is using a ccTLD
+          domain = splitArr[arrLen - 3] + '.' + domain;
+      }
+  }
+  return domain;
+}
+
+const GraduateInformationDisplay = () => {
 
   const executeOnClick = (isExpanded) => {
     console.log(isExpanded);
@@ -30,7 +45,7 @@ const GraduateInformationDisplay = ({ filteredData }) => {
   }
   return (
     <Modal.Dialog className="border-dark">
-      <Modal.Header show={show} onHide={handleClose} closeButton>
+      <Modal.Header>
         <Modal.Title>
           <Container>
             <Row className="rows">
@@ -66,10 +81,11 @@ const GraduateInformationDisplay = ({ filteredData }) => {
         </Row>
         <Row className="justify-content-center mt-3">
           <Col>
-            Full Time,{graduate.full_time}
-            Part time, {graduate.part_time}
-            Contract,{graduate.contract}
-            Temp: {graduate.temp}
+
+           {graduate.full_time ? "Full Time" : ""}
+            {graduate.part_time ?"Part Time" : ""}
+           {graduate.contract ? "Contract" :""}
+           {graduate.temp ? "Temp" : ""}
           </Col>
         </Row>
 
@@ -81,6 +97,7 @@ const GraduateInformationDisplay = ({ filteredData }) => {
             <hr />
             <Col xs={6} md={4} className="col-xs-6 mr-5 mb-3">
               <i class="fab fa-linkedin fa-2x"></i>
+
               <a
                 className="ml-2"
                 style={{ fontSize: "65%" }}
@@ -88,46 +105,54 @@ const GraduateInformationDisplay = ({ filteredData }) => {
                 rel="noreferrer"
                 href={graduate.linkedin}
               >
+
                 linkedIn
               </a>
             </Col>
-            <Col className="col-xs-4 ">
+           <Col className="col-xs-4 ">
               <i class="fas fa-globe fa-2x"></i>
+
               <a
                 className="ml-2"
                 style={{ fontSize: "70%" }}
                 href={graduate.website}
               >
                 {graduate.website}
+
               </a>
             </Col>
           </Row>
           <Row className="rows">
             <hr />
-            <Col xs={6} md={4} className="columns mr-5">
+        <Col xs={6} md={4} className="columns mr-5">
               <i class="fas fa-file-csv fa-2x"></i>
+
               <a
                 className="ml-2"
                 style={{ fontSize: "80%" }}
                 href={graduate.resume}
               >
                 cv {graduate.resume}
+
               </a>
             </Col>
-            <Col className="columns">
+        <Col className="columns">
               <i class="fab fa-github fa-2x"></i>
+
               <a
                 className="ml-2"
                 style={{ fontSize: "70%" }}
                 href={graduate.github}
               >
                 github {graduate.GitHub}
+
               </a>
             </Col>
           </Row>
           <hr />
         </Container>
         <Container>
+
           <ShowMoreText
             lines={3}
             more={
@@ -158,6 +183,9 @@ const GraduateInformationDisplay = ({ filteredData }) => {
               <Link to="/ContactForm">Send Email to Enquire</Link>
             </Button> */}
           </Row>
+
+          
+
         </Container>
       </Modal.Body>
     </Modal.Dialog>

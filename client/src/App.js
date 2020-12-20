@@ -38,6 +38,7 @@ function App() {
 
 const Navigation = () => {
   return (
+
     <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
       <Container>
         <LinkContainer to="/">
@@ -63,6 +64,7 @@ const Navigation = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
   );
 };
 
@@ -74,9 +76,11 @@ const Main = () => {
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
-      {/* <Route exact path="/graduates/:_id" component={GraduateProfile} /> */}
+
+
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
+
       <Route
         exact
         path="/graduates/:_id/profile"
@@ -89,6 +93,7 @@ const Main = () => {
       <Route>
         <ContactForm />
       </Route>
+
     </Switch>
   );
 };

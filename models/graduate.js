@@ -55,7 +55,10 @@ const graduateSchema = new mongoose.Schema({
     type: String,
   },
   upload_cv: {
+    // data: Buffer,
+    // contentType: String,
     type: String,
+
   },
   resume_textarea: {
     type: String,
