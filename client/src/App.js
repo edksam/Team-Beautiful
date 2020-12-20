@@ -2,7 +2,6 @@ import "./index.css";
 import {
   BrowserRouter as Router,
   Route,
-  NavLink,
   Switch,
 } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
@@ -20,7 +19,8 @@ import GraduateInfo from "../src/components/graduates/GraduateInfo";
 import logo from "./images/logo.png";
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
-// import GithubMsLogin from "./components/pages/GithubMsLogin";
+import NotFound from "./components/pages/NotFound";
+import ContactForm from "./components/pages/ContactForm";
 
 function App() {
   return (
@@ -53,12 +53,13 @@ const Navigation = () => {
         </LinkContainer>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
-          <LinkContainer to="/graduates/LoginForm">
-            <Nav className="ml-auto">
+          <Nav activeKey={window.location.pathname} className="ml-auto">
+            <LinkContainer to="/LoginForm">
               <Nav.Link>Login</Nav.Link>
-            </Nav>
-          </LinkContainer>
+            </LinkContainer>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -69,7 +70,7 @@ const Main = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="LoginForm" component={LoginForm} />
+      <Route exact path="/LoginForm" component={LoginForm} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
@@ -82,6 +83,12 @@ const Main = () => {
         component={GraduateInformationDisplay}
       />
       {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
+      <Route>
+        <NotFound />
+      </Route>
+      <Route>
+        <ContactForm />
+      </Route>
     </Switch>
   );
 };
